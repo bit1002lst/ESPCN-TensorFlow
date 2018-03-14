@@ -34,7 +34,7 @@ def prepare_images():
             width = hr_image.shape[1]
             new_width = width - width % ratio
             hr_image = hr_image[0:new_height,0:new_width]
-            lr_image = blurred[::ratio,::ratio,:]
+            lr_image = hr_image[::ratio,::ratio,:]
 
             height = hr_image.shape[0]
             width = hr_image.shape[1]
