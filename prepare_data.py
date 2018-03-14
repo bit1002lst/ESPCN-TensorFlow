@@ -59,6 +59,7 @@ def shuffle(input_image, ratio):
 def prepare_data():
     with open("./params.json", 'r') as f:
         params = json.load(f)
+    ratio, lr_size, edge = params['ratio'], params['lr_size'], params['edge']
     params['hr_stride'] = params['lr_stride'] * ratio
     params['hr_size'] = lr_size * ratio
 
@@ -67,7 +68,7 @@ def prepare_data():
             shutil.rmtree(params[ele + '_dir'])
         os.makedirs(params[ele + '_dir'])
 
-    ratio, lr_size, edge = params['ratio'], params['lr_size'], params['edge']
+    
     image_dirs = [params['training_image_dir'], params['validation_image_dir'], params['test_image_dir']]
     data_dirs = [params['training_dir'], params['validation_dir'], params['test_dir']]
     hr_start_idx = ratio * edge / 2
