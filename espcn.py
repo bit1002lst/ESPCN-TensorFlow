@@ -106,7 +106,7 @@ class ESPCN:
         input_images, input_labels = input_list[0][:,:,:,0:1], None
         # Generate doesn't use input_labels
         if input_data[1] is not None:
-            input_labels = input_list[1][:,:,:,0:9]
+            input_labels = input_list[1][:,:,:,0:self.ratio**2]
         return input_images, input_labels
 
     def create_network(self, input_labels):
